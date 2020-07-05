@@ -184,7 +184,7 @@ throttleInterval  | 节流间隔, 单位为毫秒，设置后，请求进入节�
 
 - 自动管理分页条件 `page` ， `page: {pageNum: number, pageSize: number}` 。
 - 内部缓存当前查询条件 `data` ，当分页变化后，自动携带当前查询条件触发请求。
-- `run` 方法如果带有参数，表示修改了查询条件，将会重置当前页码为1，并触发请求。
+- `run` 方法如果带有参数，表示修改了查询条件，将会重置当前页码为 `1`，并触发请求。
 - `refresh` 自动带入当前参数并触发请求。
 - `changePagination` 修改分页，将使用当前查询条件进行请求。
 
@@ -225,7 +225,6 @@ pagination  | 分页数据 `current` `pageSize` `total` | `object` |
 defaultPageNum  | 默认当前页面 | `number` | `1` |
 defaultPageSize  | 默认每页的数量 | `number` | `10` |
 defaultTotal  | 默认总数量 | `number` | `0` |
-defaultParams  | 默认参数 | `Any` | - |
 
 ### 加载更多
 
@@ -234,7 +233,7 @@ defaultParams  | 默认参数 | `Any` | - |
 - 首次加载需通过调用 `run`，并传入除分页外的查询参数。
 - 加载下一页 `loadMore` 或 重新加载 `reload` 会自动带入之前参数，并自动管理分页参数。
 - `loadingMore` 仅在非首页加载时为 `true` 。
-- `refresh` 和 `reload` 是一样的，将会重置当前页码为1，并触发请求。
+- `refresh` 和 `reload` 是一样的，将会重置当前页码为 `1`，并触发请求。
 
 #### LoadMoreState
 
