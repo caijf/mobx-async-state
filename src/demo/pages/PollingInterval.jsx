@@ -21,14 +21,16 @@ const getUsernameState = new AsyncState(getUsername, {
 });
 
 export default observer(() => {
+  const { loading, data, cancel, run } = getUsernameState;
+
   return (
     <>
-      <Spin spinning={getUsernameState.loading}>
-        <p>Username: {getUsernameState.data}</p>
+      <Spin spinning={loading}>
+        <p>Username: {data}</p>
       </Spin>
       <Button.Group>
-        <Button onClick={getUsernameState.run}>start</Button>
-        <Button onClick={getUsernameState.cancel}>stop</Button>
+        <Button onClick={run}>start</Button>
+        <Button onClick={cancel}>stop</Button>
       </Button.Group>
     </>
   )

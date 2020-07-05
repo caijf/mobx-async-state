@@ -20,12 +20,13 @@ const getArticleState = new AsyncState(getArticle, {
 
 export default observer(() => {
   const [visible, setVisible] = useState(false);
+  const { run } = getArticleState;
 
   return (
     <div>
       <p>When the mouse hovers over the button, the article data is preloaded.</p>
       <p>
-        <Button onMouseEnter={() => getArticleState.run()} onClick={() => setVisible(b => !b)}>show/hidden</Button>
+        <Button onMouseEnter={() => run()} onClick={() => setVisible(b => !b)}>show/hidden</Button>
       </p>
       {visible && <Article />}
     </div>
@@ -33,10 +34,12 @@ export default observer(() => {
 });
 
 const Article = observer(() => {
+  const { data, loading } = getArticleState;
+
   return (
-    <Spin spinning={!getArticleState.data && getArticleState.loading}>
-      <p>Latest request time: {getArticleState.data?.time}</p>
-      <p>{getArticleState.data?.data}</p>
+    <Spin spinning={!data && loading}>
+      <p>Latest request time: {data?.time}</p>
+      <p>{data?.data}</p>
     </Spin>
   );
 });

@@ -13,11 +13,13 @@ import getUsername from "../services/getUsername";
 const getUsernameState = new AsyncState(getUsername);
 
 export default observer(() => {
-  if (getUsernameState.loading) {
+  const { loading, error, data } = getUsernameState;
+
+  if (loading) {
     return <div>loading...</div>
   }
-  if (getUsernameState.error) {
+  if (error) {
     return <div>failed to load</div>
   }
-  return <div>Username: {getUsernameState.data}</div>
+  return <div>Username: {data}</div>
 })

@@ -18,6 +18,8 @@ const getEmailState = new AsyncState(getEmail, {
 });
 
 export default observer(() => {
+  const { data, run, cancel, loading } = getEmailState;
+
   return (
     <div>
       <p>Enter quickly to see the effect</p>
@@ -25,12 +27,12 @@ export default observer(() => {
         showSearch
         placeholder="Select Emails"
         filterOption={false}
-        onSearch={getEmailState.run}
-        onBlur={getEmailState.cancel}
-        loading={getEmailState.loading}
+        onSearch={run}
+        onBlur={cancel}
+        loading={loading}
         style={{ width: 300 }}
       >
-        {getEmailState.data && getEmailState.data.map(i => <Option key={i}>{i}</Option>)}
+        {data && data.map(i => <Option key={i}>{i}</Option>)}
       </Select>
     </div>
   );

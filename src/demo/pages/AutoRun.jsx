@@ -1,6 +1,9 @@
 /**
  * title: 手动触发
- * desc: 通过设置 `options.autoRun = false` , 则需要手动调用 `run` 时才会触发执行异步函数。
+ * desc: |
+ *    通过设置 `options.autoRun = false` , 则需要手动调用 `run` 时才会触发执行异步函数。
+ * 
+ *    由于 `params` 非观察数据，所以不要解构出来使用。
  */
 
 import 'mobx-react-lite/batchingForReactDom';

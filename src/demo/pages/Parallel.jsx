@@ -11,17 +11,17 @@ import AsyncState from "mobx-async-state";
 import deleteUser from "../services/deleteUser";
 
 const DeleteButton = observer(({ id, username }) => {
-  const deleteUserState = useMemo(() => new AsyncState(deleteUser, { autoRun: false }), []);
+  const { run, loading } = useMemo(() => new AsyncState(deleteUser, { autoRun: false }), []);
 
   const handleDelete = useCallback(() => {
-    deleteUserState.run(id).then((result) => {
+    run(id).then((result) => {
       if (result.success) {
         message.success(`Delete user ${username}`);
       }
     });
   }, []);
 
-  return <Button loading={deleteUserState.loading} onClick={() => { handleDelete(id) }}>delete {username}</Button>
+  return <Button loading={loading} onClick={() => { handleDelete(id) }}>delete {username}</Button>
 });
 
 export default () => {
