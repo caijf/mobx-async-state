@@ -1,6 +1,7 @@
 {
-  "umi.css": "https://caijf.github.io/mobx-async-state/site/umi.012a9e80.css",
-  "umi.js": "https://caijf.github.io/mobx-async-state/site/umi.9a5ec567.js",
+  "umi.js": "https://caijf.github.io/mobx-async-state/site/umi.ef04f16f.js",
+  "vendors.css": "https://caijf.github.io/mobx-async-state/site/vendors.012a9e80.chunk.css",
+  "vendors.js": "https://caijf.github.io/mobx-async-state/site/vendors.aadad997.async.js",
   "index.html": "https://caijf.github.io/mobx-async-state/site/index.html",
   "static/katex.min.css": "https://caijf.github.io/mobx-async-state/site/static/KaTeX_Typewriter-Regular.d3c8e68f.woff"
 }

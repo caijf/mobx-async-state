@@ -5,7 +5,7 @@ Mobx 异步函数的状态管理，自动观察 `loading` `data` `error` 数据�
 
 ## 对比 hooks
 
-API 完全与 rc-hooks 的 [useAsync]保持一致，与 `hooks` 相比有以下区别：
+API 完全与 rc-hooks 的 [useAsync] 保持一致，与 `hooks` 相比有以下区别：
 
 - 使用 `Context` 管理状态
 - 可以在组件外使用和修改

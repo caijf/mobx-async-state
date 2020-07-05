@@ -38,25 +38,26 @@ const umiConfig = {
   locales: [['zh-CN', '中文'], ['en-US', 'English']]
 };
 
-// if (process.env.NODE_ENV === 'production') {
-//   umiConfig.chainWebpack = function (config, { webpack }) {
-//     config.merge({
-//       optimization: {
-//         minimize: true,
-//         splitChunks: {
-//           cacheGroups: {
-//             vendor: {
-//               test: /node_modules/,
-//               chunks: "all",
-//               name: "vendor",
-//               priority: -10,
-//               enforce: true
-//             }
-//           }
-//         },
-//       }
-//     });
-//   }
-// }
+if (process.env.NODE_ENV === 'production') {
+  umiConfig.chunks = ['vendors', 'umi'];
+  umiConfig.chainWebpack = function (config, { webpack }) {
+    config.merge({
+      optimization: {
+        minimize: true,
+        splitChunks: {
+          cacheGroups: {
+            vendor: {
+              test: /node_modules/,
+              chunks: "all",
+              name: "vendors",
+              priority: -10,
+              enforce: true
+            }
+          }
+        }
+      }
+    });
+  }
+}
 
 export default umiConfig;
