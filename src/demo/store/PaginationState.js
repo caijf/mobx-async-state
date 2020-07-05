@@ -7,7 +7,7 @@ class PaginationState {
   constructor(asyncFn, {
     defaultPageNum = 1,
     defaultPageSize = 10,
-    defaultTotal = 10,
+    defaultTotal = 0,
     defaultParams,
     ...restOptions
   } = {}) {
