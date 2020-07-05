@@ -41,11 +41,11 @@ const someAsyfnState = new AsyncState(someAsyncFn, options);
 data  | 异步函数的返回值，默认为 `undefined`。 | `any` |
 error  | 异步函数抛出的异常，默认为 `undefined` | `any` |
 loading  | 异步函数正在执行 | `boolean` |
-params  | 执行service的参数数组。比如你触发了 run(1, 2, 3)，则 params 等于 [1, 2, 3] | `array` |
-run  | 手动触发异步函数。debounce 模式与throttle 模式返回值为 `Promise<null>` | `(...args) => Promise` |
+params  | 执行异步函数的参数数组。比如你触发了 `run(1, 2, 3)`，则 params 等于 `[1, 2, 3]` | `array` |
+run  | 手动触发异步函数。`debounce` 模式与 `throttle` 模式返回值为 `Promise<null>` | `(...args) => Promise` |
 cancel  | 取消当前请求。如果有轮询，停止。 | `() => void` |
-refresh  | 使用上一次的params，重新执行异步函数。 | `() => void` |
-mutate  | 直接修改data | `(newData) => void` / `((oldData) => newData) => void` |
+refresh  | 使用上一次的 `params`，重新执行异步函数。 | `() => void` |
+mutate  | 直接修改 `data` | `(newData) => void` / `((oldData) => newData) => void` |
 destroy  | 取消当前请求及订阅（如监听视窗焦点/显示）。 | `() => void` |
 
 ### Params
@@ -65,7 +65,7 @@ cacheTime  | 缓存时间，单位为毫秒。 | `number` | `5*60*1000` |
 loadingDelay  | 设置 `loading` 延迟时间，避免闪烁，单位为毫秒。| `number` | - |
 pollingInterval | 轮询间隔，单位为毫秒。设置后，将进入轮询模式，定时触发 `run` | `number`  | - |
 refreshOnWindowFocus  | 在屏幕重新获取焦点或重新显示时，是否重新发起请求。默认为 `false`，即不会重新发起请求。如果设置为 `true`，在屏幕重新聚焦或重新显示时，会重新发起请求。 | `boolean` | `false` |
-focusTimespan  | 屏幕重新聚焦，如果每次都重新发起请求，不是很好，我们需要有一个时间间隔，在当前时间间隔内，不会重新发起请求。需要配置 refreshOnWindowFocus 使用。 | `number` | `5000` |
+focusTimespan  | 屏幕重新聚焦，如果每次都重新发起请求，不是很好，我们需要有一个时间间隔，在当前时间间隔内，不会重新发起请求。需要配置 `refreshOnWindowFocus` 使用。 | `number` | `5000` |
 debounceInterval  | 防抖间隔, 单位为毫秒，设置后，请求进入防抖模式。 | `number` | - |
 throttleInterval  | 节流间隔, 单位为毫秒，设置后，请求进入节流模式。 | `number` | - |
 

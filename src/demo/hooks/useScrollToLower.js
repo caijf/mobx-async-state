@@ -7,13 +7,13 @@ const useScrollToLower = ({
   onLoad = () => { }
 } = {}) => {
   const scrollMethod = useCallback(() => {
-    if (ready) {
+    if (!ready) {
       return;
     }
     if (ref.current.scrollHeight - ref.current.scrollTop <= ref.current.clientHeight + threshold) {
       onLoad();
     }
-  }, [ready]);
+  }, [ready, ref]);
 
   useEffect(() => {
     if (!ref || !ref.current) {
@@ -26,7 +26,7 @@ const useScrollToLower = ({
         ref.current.removeEventListener('scroll', scrollMethod);
       }
     };
-  }, [ref]);
+  }, [scrollMethod]);
 }
 
 export default useScrollToLower;

@@ -36,7 +36,7 @@ export default observer(() => {
   useEffect(() => {
     run({ a: 1 });
   }, []);
-
+  console.log('loading:', loading, ' done:', done);
   useScrollToLower({
     ready: !loading && !done,
     onLoad: loadMore,

@@ -31,6 +31,10 @@ class LoadMoreState {
           this.data = this.data.concat(res.data);
         }
 
+        if (this.page.pageSize * this.page.pageNum >= this.page.total) {
+          this.done = true;
+        }
+
         if (restOptions.onSuccess) {
           restOptions.onSuccess(res, params);
         }
@@ -76,16 +80,6 @@ class LoadMoreState {
       ...restPage
     };
   }
-  get done() {
-    if (
-      !this.loading &&
-      !this._async.error &&
-      this.data.length >= this.page.total
-    ) {
-      return true;
-    }
-    return false;
-  }
   // 传入参数，发起请求
   run(params) {
     this.params = params;
@@ -107,6 +101,7 @@ class LoadMoreState {
   }
   // 重置到第一页，发起请求
   reload() {
+    this.done = false;
     this.cancel();
     this.page.pageNum = 1;
     this.run(this.params);
@@ -125,10 +120,10 @@ class LoadMoreState {
 
 export default decorate(LoadMoreState, {
   page: observable,
+  done: observable,
   loading: computed,
   loadingMore: computed,
   pagination: computed,
-  done: computed,
   error: computed,
   loadMore: action,
   reload: action
