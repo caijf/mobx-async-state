@@ -18,7 +18,7 @@ API 完全与 rc-hooks 的 [useAsync]保持一致，与 `hooks` 相比有以下�
 ```shell
 npm install mobx-async-state
 # or
-yarn install mobx-async-state
+yarn add mobx-async-state
 ```
 
 ## 使用
