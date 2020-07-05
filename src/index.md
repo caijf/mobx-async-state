@@ -225,7 +225,7 @@ pagination  | 分页数据 `current` `pageSize` `total` | `object` |
 defaultPageNum  | 默认当前页面 | `number` | `1` |
 defaultPageSize  | 默认每页的数量 | `number` | `10` |
 defaultTotal  | 默认总数量 | `number` | `0` |
-defaultParams  | 默认参数 | `object` | `{}` |
+defaultParams  | 默认参数 | `Any` | - |
 
 ### 加载更多
 
@@ -252,9 +252,7 @@ const {
   done,
   pagination
 } = new LoadMoreState(asyncFn, {
-  defaultPageSize,
-  threshold,
-  ref
+  defaultPageSize
 });
 ```
 
@@ -273,5 +271,3 @@ pagination  | 分页数据 `current` `pageSize` `total` | `object` |
 参数 | 说明 | 类型 | 默认值 |
 ------------- | ------------- | ------------- | ------------- |
 defaultPageSize  | 默认每页的数量 | `number` | `10` |
-threshold  | 上拉自动加载，距离底部距离阈值 | `number` | `100` |
-ref  | 容器的 `ref` ，如果存在，则在滚动到底部时，自动触发 loadMore | `RefObject<HTMLElement>` | - |

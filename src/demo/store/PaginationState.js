@@ -8,7 +8,7 @@ class PaginationState {
     defaultPageNum = 1,
     defaultPageSize = 10,
     defaultTotal = 10,
-    defaultParams = {},
+    defaultParams,
     ...restOptions
   } = {}) {
     // 分页
