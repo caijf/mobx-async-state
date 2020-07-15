@@ -41,7 +41,7 @@ const someAsyfnState = new AsyncState(someAsyncFn, options);
 data  | 异步函数的返回值，默认为 `undefined`。 | `any` |
 error  | 异步函数抛出的异常，默认为 `undefined` | `any` |
 loading  | 异步函数正在执行 | `boolean` |
-params  | 执行异步函数的参数数组。比如你触发了 `run(1, 2, 3)`，则 params 等于 `[1, 2, 3]` | `array` |
+params  | 执行异步函数的参数数组。比如你触发了 `run(1, 2, 3)`，则 params 等于 `[1, 2, 3]`。**该值未被观察，变更后不会触发组件更新。** | `array` |
 run  | 手动触发异步函数。`debounce` 模式与 `throttle` 模式返回值为 `Promise<null>` | `(...args) => Promise` |
 cancel  | 取消当前请求。如果有轮询，停止。 | `() => void` |
 refresh  | 使用上一次的 `params`，重新执行异步函数。 | `() => void` |
