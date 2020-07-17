@@ -15,6 +15,7 @@ class LoadMoreState {
     }
     // 查询条件
     this.params = defaultParams;
+
     // 数据
     this.data = [];
 
@@ -60,7 +61,7 @@ class LoadMoreState {
     this.mutate = this._async.mutate;
 
     if (typeof restOptions.autoRun === 'undefined' || restOptions.autoRun) {
-      this.reload(this.params);
+      this.run(defaultParams);
     }
   }
 

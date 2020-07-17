@@ -43,7 +43,7 @@ class PaginationState {
     this.run = this.run.bind(this);
 
     if (typeof restOptions.autoRun === 'undefined' || restOptions.autoRun) {
-      this.run(this.params);
+      this.run();
     }
   }
 
