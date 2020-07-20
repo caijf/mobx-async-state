@@ -35,12 +35,12 @@ class PaginationState {
       }
     });
 
-    this.refresh = this._async.refresh;
     this.mutate = this._async.mutate;
     this.cancel = this._async.cancel;
     this.destroy = this._async.destroy;
     this.changePagination = this.changePagination.bind(this);
     this.run = this.run.bind(this);
+    this.refresh = this.refresh.bind(this);
 
     if (typeof restOptions.autoRun === 'undefined' || restOptions.autoRun) {
       this.run();
@@ -63,6 +63,10 @@ class PaginationState {
     });
   }
 
+  refresh() {
+    this.run();
+  }
+
   // 监听分页变化
   changePagination({ pageSize, current }) {
     this.page = {
@@ -73,13 +77,13 @@ class PaginationState {
     this.run();
   }
 
-  get loading(){
+  get loading() {
     return this._async.loading;
   }
-  get error(){
+  get error() {
     return this._async.error;
   }
-  get data(){
+  get data() {
     // 3. 处理返回数据
     return this._async.data ? this._async.data.data : [];
   }
