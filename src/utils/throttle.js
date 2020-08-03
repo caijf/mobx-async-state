@@ -2,7 +2,7 @@
 // 多次调用在一定时间间隔内仅执行一次
 export default function throttle(fn, timespan) {
   // 最后一次执行时间
-  let last = "";
+  let last;
   // 定时器
   let timer = null;
   // 最后执行时的参数

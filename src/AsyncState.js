@@ -171,20 +171,20 @@ class AsyncState {
             clearTimeout(this.loadingDelayTimer);
           }
 
-          const fmtData = formatResult ? formatResult(res) : res;
+          const fmtData = typeof formatResult === 'function' ? formatResult(res) : res;
 
           runInAction(() => {
             this.loading = false;
             this.originData = fmtData;
             this.originError = null;
-
-            if (cacheKey) {
-              setCache(cacheKey, fmtData, cacheTime);
-            }
-
-            typeof onSuccess === 'function' && onSuccess(fmtData, this.params);
-            resolve(fmtData);
           });
+
+          if (cacheKey) {
+            setCache(cacheKey, fmtData, cacheTime);
+          }
+
+          typeof onSuccess === 'function' && onSuccess(fmtData, this.params);
+          resolve(fmtData);
         }
       }).catch(err => {
         if (currentCount === this.__requestCount) {
@@ -195,10 +195,10 @@ class AsyncState {
           runInAction(() => {
             this.loading = false;
             this.originError = err;
-
-            typeof onError === 'function' && onError(err, this.params);
-            reject(err);
           });
+
+          typeof onError === 'function' && onError(err, this.params);
+          reject(err);
         }
       }).finally(() => {
         if (currentCount === this.__requestCount) {
@@ -254,7 +254,7 @@ class AsyncState {
 
   // 用之前的参数，重新执行异步函数
   refresh() {
-    this.run(...this.params);
+    return this.run(...this.params);
   }
 
   // 直接修改data
