@@ -8,13 +8,20 @@ import { observer } from "mobx-react-lite";
 import { Button, message } from 'antd';
 import AsyncState from "mobx-async-state";
 
-import deleteUser from "../services/deleteUser";
+function deleteUser(userId: string): Promise<{ success: boolean }> {
+  console.log(userId);
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ success: true });
+    }, 1000);
+  });
+}
 
-const DeleteButton = observer(({ id, username }) => {
+const DeleteButton = observer(({ id, username }: { id: string, username: string }) => {
   const { run, loading } = useMemo(() => new AsyncState(deleteUser, { autoRun: false }), []);
 
-  const handleDelete = useCallback(() => {
-    run(id).then((result) => {
+  const handleDelete = useCallback((sid: string) => {
+    run(sid).then((result) => {
       if (result.success) {
         message.success(`Delete user ${username}`);
       }

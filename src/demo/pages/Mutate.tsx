@@ -8,8 +8,24 @@ import { observer } from "mobx-react-lite";
 import { Button, Input, message } from 'antd';
 import AsyncState from "mobx-async-state";
 
-import getUsername from "../services/getUsername";
-import changeUsername from "../services/changeUsername";
+import Mock from 'mockjs';
+
+function getUsername(): Promise<string> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(Mock.mock('@name'));
+    }, 1000);
+  });
+}
+
+function changeUsername(username: string): Promise<{ success: boolean }> {
+  console.log(username);
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ success: true });
+    }, 1000);
+  });
+}
 
 const getUsernameState = new AsyncState(getUsername, {
   autoRun: false

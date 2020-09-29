@@ -13,7 +13,15 @@ import { observer } from "mobx-react-lite";
 import { Button, Spin } from 'antd';
 import AsyncState from "mobx-async-state";
 
-import getUsername from "../services/getUsername";
+import Mock from 'mockjs';
+
+function getUsername(): Promise<string> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(Mock.mock('@name'));
+    }, 1000);
+  });
+}
 
 const getUsernameState = new AsyncState(getUsername, {
   pollingInterval: 1000,

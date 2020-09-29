@@ -1,6 +1,6 @@
 import Mock from 'mockjs';
 
-export default function changeUsername() {
+export default function getArticle() {
   return new Promise(resolve => {
     setTimeout(() => {
       resolve({

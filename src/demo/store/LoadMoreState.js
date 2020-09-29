@@ -1,4 +1,4 @@
-import { decorate, observable, computed, action } from "mobx";
+import { decorate, observable, computed, action, toJS } from "mobx";
 import AsyncState from "mobx-async-state";
 
 class LoadMoreState {
@@ -17,7 +17,7 @@ class LoadMoreState {
     this.params = defaultParams;
 
     // 数据
-    this.data = [];
+    this.originData = [];
 
     // 异步函数实例
     this._async = new AsyncState(asyncFn, {
@@ -27,9 +27,9 @@ class LoadMoreState {
         // 1. 设置分页和数据
         this.page.total = res.pageInfo ? res.pageInfo.total : 0;
         if (this.page.pageNum === 1) {
-          this.data = res.data;
+          this.originData = res.data;
         } else {
-          this.data = this.data.concat(res.data);
+          this.originData = this.originData.concat(res.data);
         }
 
         if (this.page.pageSize * this.page.pageNum >= this.page.total) {
@@ -65,6 +65,9 @@ class LoadMoreState {
     }
   }
 
+  get data() {
+    return toJS(this.originData);
+  }
   get loading() {
     return this._async.loading;
   }
@@ -87,7 +90,7 @@ class LoadMoreState {
     const { pageNum, pageSize } = this.page;
 
     // 2. 传入参数，发起请求
-    this._async.run({
+    return this._async.run({
       page: { pageNum, pageSize },
       data: this.params
     });
@@ -98,14 +101,14 @@ class LoadMoreState {
       return;
     }
     this.page.pageNum += 1;
-    this.run(this.params);
+    return this.run(this.params);
   }
   // 重置到第一页，发起请求
   reload() {
     this.done = false;
     this.cancel();
     this.page.pageNum = 1;
-    this.run(this.params);
+    return this.run(this.params);
   }
   cancel() {
     if (this.loading && this.page.pageNum > 1) {
@@ -122,6 +125,8 @@ class LoadMoreState {
 export default decorate(LoadMoreState, {
   page: observable,
   done: observable,
+  originData: observable,
+  data: computed,
   loading: computed,
   loadingMore: computed,
   pagination: computed,

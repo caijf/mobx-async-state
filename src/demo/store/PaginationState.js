@@ -57,14 +57,14 @@ class PaginationState {
     const { pageNum, pageSize } = this.page;
 
     // 2. 传入参数，发起请求
-    this._async.run({
+    return this._async.run({
       page: { pageSize, pageNum },
       data: this.params
     });
   }
 
   refresh() {
-    this.run();
+    return this.run();
   }
 
   // 监听分页变化
@@ -74,7 +74,7 @@ class PaginationState {
       pageSize,
       pageNum: current
     };
-    this.run();
+    return this.run();
   }
 
   get loading() {

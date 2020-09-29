@@ -8,7 +8,13 @@ import { observer } from "mobx-react-lite";
 import { Spin, Button } from 'antd';
 import AsyncState from "mobx-async-state";
 
-import getCurrentTime from "../services/getCurrentTime";
+function getCurrentTime(): Promise<number> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve(new Date().getTime())
+    }, 100)
+  });
+}
 
 const getCurrentTimeState = new AsyncState(getCurrentTime);
 const withLoadingDelayState = new AsyncState(getCurrentTime, {

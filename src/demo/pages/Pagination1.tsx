@@ -19,7 +19,7 @@ export default observer(() => {
       <List
         dataSource={data || []}
         loading={loading}
-        renderItem={item => (
+        renderItem={(item: any) => (
           <List.Item>
             {item.name} - {item.email}
           </List.Item>

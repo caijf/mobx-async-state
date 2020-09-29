@@ -11,7 +11,18 @@ import { Button, Spin } from 'antd';
 import { observer } from "mobx-react-lite";
 import AsyncState from "mobx-async-state";
 
-import getArticle from "../services/getArticle";
+import Mock from 'mockjs';
+
+function getArticle(): Promise<{ data: string, time: number }> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({
+        data: Mock.mock('@paragraph'),
+        time: new Date().getTime()
+      })
+    }, 1000)
+  });
+}
 
 const getArticleState = new AsyncState(getArticle, {
   autoRun: false,

@@ -1,15 +1,18 @@
 # mobx-async-state
 
+> 如果你使用的 `react` 版本为 `16.8` 及以上，推荐使用 `hooks` 实现的 [useAsync]。
+
 Mobx 异步函数的状态管理，自动观察 `loading` `data` `error` 数据。[查看文档示例]
 
 
 ## 对比 hooks
 
-API 完全与 rc-hooks 的 [useAsync] 保持一致，与 `hooks` 相比有以下区别：
+API 完全与 [rc-hooks] 的 [useAsync] 保持一致，与 `hooks` 相比有以下区别：
 
 - 使用 `Context` 管理状态
 - 可以在组件外使用和修改
 - 没有 `hooks` 的生命周期
+- 没有 `refreshDeps` 语法糖
 - 在单页应用中，状态可能应用在`“全局”`，需要注意清除或重新实例
 
 
@@ -69,5 +72,6 @@ focusTimespan  | 屏幕重新聚焦，如果每次都重新发起请求，不是
 debounceInterval  | 防抖间隔, 单位为毫秒，设置后，请求进入防抖模式。 | `number` | - |
 throttleInterval  | 节流间隔, 单位为毫秒，设置后，请求进入节流模式。 | `number` | - |
 
+[rc-hooks]: https://doly-dev.github.io/rc-hooks/site/#/
 [useAsync]: https://doly-dev.github.io/rc-hooks/site/#/async/use-async
 [查看文档示例]: https://caijf.github.io/mobx-async-state/site/#/mobx-asnyc-state

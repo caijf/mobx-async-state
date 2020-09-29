@@ -12,7 +12,14 @@ import { observer } from "mobx-react-lite";
 import { Button, Input, message } from 'antd';
 import AsyncState from "mobx-async-state";
 
-import changeUsername from "../services/changeUsername";
+function changeUsername(username: string): Promise<{ success: boolean }> {
+  console.log(username);
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve({ success: true });
+    }, 1000);
+  });
+}
 
 const changeUsernameState = new AsyncState(changeUsername, {
   autoRun: false

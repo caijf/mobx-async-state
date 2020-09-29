@@ -2,7 +2,7 @@
  * title: 上拉加载更多
  */
 
-import React, { useRef, useCallback, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { observer } from "mobx-react-lite";
 import { Avatar, Button, List } from 'antd';
 
@@ -36,7 +36,7 @@ export default observer(() => {
   useEffect(() => {
     run({ a: 1 });
   }, []);
-  console.log('loading:', loading, ' done:', done);
+  // console.log('loading:', loading, ' done:', done, ' data:', data);
   useScrollToLower({
     ready: !loading && !done,
     onLoad: loadMore,
@@ -55,7 +55,7 @@ export default observer(() => {
         loading={loading && !loadingMore}
         bordered
         dataSource={data}
-        renderItem={item => (
+        renderItem={(item: any) => (
           <List.Item>
             <List.Item.Meta
               avatar={
