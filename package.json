@@ -1,6 +1,6 @@
 {
   "name": "mobx-async-state",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "State management of mobx async function.",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
