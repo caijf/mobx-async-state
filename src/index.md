@@ -197,6 +197,8 @@ throttleInterval  | 节流间隔, 单位为毫秒，设置后，请求进入节�
 
 #### API
 
+查看 [`PaginationState.d.ts`](https://github.com/caijf/mobx-async-state/blob/master/src/demo/store/PaginationState.d.ts)
+
 ```
 const { 
   ...,
@@ -242,6 +244,8 @@ defaultTotal  | 默认总数量 | `number` | `0` |
 <code src="./demo/pages/LoadMore2.tsx" />
 
 #### API
+
+查看 [`LoadMoreState.d.ts`](https://github.com/caijf/mobx-async-state/blob/master/src/demo/store/LoadMoreState.d.ts)
 
 ```
 const { 
