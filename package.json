@@ -9,8 +9,13 @@
     "dev": "npx dumi dev",
     "doc": "npx dumi build",
     "build": "rm -rf lib && babel src --out-dir lib --ignore 'src/**/demo/**/*','src/**/*.md','src/.umi'",
-    "build:doc": "npm run doc"
+    "build:doc": "npm run doc",
+    "prepublishOnly": "npm run build"
   },
+  "files": [
+    "lib",
+    "types"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/caijf/mobx-async-state.git"
