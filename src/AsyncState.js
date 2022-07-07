@@ -133,6 +133,7 @@ class AsyncState {
       return Promise.resolve(null);
     }
 
+    this.__requestCount += 1;
     return this._run(...args);
   }
 
@@ -149,7 +150,6 @@ class AsyncState {
       clearTimeout(this.loadingDelayTimer);
     }
 
-    this.__requestCount += 1;
     const currentCount = this.__requestCount;
 
     this.params = args;
