@@ -3,7 +3,7 @@ const pkg = require('./package.json');
 
 const serverRootDirect = process.env.NODE_ENV === 'production' ? 'https://caijf.github.io/mobx-async-state/' : '/';
 const logo = 'https://doly-dev.github.io/logo.png';
-const favicon = 'https://doly-dev.github.io/favicon.ico';
+const favicon = 'https://doly-dev.github.io/favicon.png';
 
 // const outputPath = 'site/' + version;
 const outputPath = 'site';
