@@ -2,8 +2,8 @@ const pkg = require('./package.json');
 // const version = `${pkg.version.split('.')[0]}.x`;
 
 const serverRootDirect = process.env.NODE_ENV === 'production' ? 'https://caijf.github.io/mobx-async-state/' : '/';
-const logo = 'https://www.caijinfeng.com/assets/images/logo-doly@3x.png';
-const favicon = 'https://www.caijinfeng.com/assets/images/doly-touch-icon_48x48.png';
+const logo = 'https://doly-dev.github.io/logo.png';
+const favicon = 'https://doly-dev.github.io/favicon.ico';
 
 // const outputPath = 'site/' + version;
 const outputPath = 'site';
